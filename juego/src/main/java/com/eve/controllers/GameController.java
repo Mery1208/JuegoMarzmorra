@@ -111,6 +111,7 @@ public class GameController implements Observer {
         GestorJuego gestor = Proveedor.getInstance().getGestorJuego();
         Image suelo = new Image(getClass().getResourceAsStream(gestor.getEscenario().getSuelo()));
         Image pared = new Image(getClass().getResourceAsStream(gestor.getEscenario().getPared()));
+        Image trampa = new Image(getClass().getResourceAsStream(gestor.getEscenario().getTrampa())); 
         String[][] escenario = gestor.getEscenario().getEscenario();
         gridPane.getChildren().clear();
         gridPane.setHgap(0);
@@ -130,6 +131,8 @@ public class GameController implements Observer {
                 ImageView imageView;
                 if (escenario[i][j].equals("p")) {
                     imageView = new ImageView(pared);
+                } else if (escenario[i][j].equals("t")) { 
+                    imageView = new ImageView(trampa);
                 } else {
                     imageView = new ImageView(suelo);
                 }

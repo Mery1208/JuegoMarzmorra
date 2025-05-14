@@ -221,18 +221,17 @@ public class Protagonista extends Personaje {
 
     public void realizarAccionProta(String teclaPresionada) {
         GestorJuego gestorJuego = Proveedor.getInstance().getGestorJuego();
-        String escenario[][] = gestorJuego.getEscenario().getEscenario();
-        // Escucha de teclado
+        Escenario escenarioObj = gestorJuego.getEscenario();
         int[] posicion = this.getPosicion();
         String accion = comprobarAccion(this.getPosicion(), teclaPresionada);
         switch (teclaPresionada) {
             case "W":
                 switch (accion) {
                     case "mover":
-                        this.moverPersonaje(posicion[0] - 1, posicion[1], escenario);
+                        escenarioObj.moverPersonaje(this, posicion[0] - 1, posicion[1]);
                         break;
                     case "atacar":
-                        this.atacarPersonaje(posicion[0] - 1, posicion[1], escenario);
+                        this.atacarPersonaje(posicion[0] - 1, posicion[1], escenarioObj.getEscenario());
                         break;
                     default:
                         break;
@@ -241,10 +240,10 @@ public class Protagonista extends Personaje {
             case "A":
                 switch (accion) {
                     case "mover":
-                        this.moverPersonaje(posicion[0], posicion[1] - 1, escenario);
+                        escenarioObj.moverPersonaje(this, posicion[0], posicion[1] - 1);
                         break;
                     case "atacar":
-                        this.atacarPersonaje(posicion[0], posicion[1] - 1, escenario);
+                        this.atacarPersonaje(posicion[0], posicion[1] - 1, escenarioObj.getEscenario());
                         break;
                     default:
                         break;
@@ -253,10 +252,10 @@ public class Protagonista extends Personaje {
             case "S":
                 switch (accion) {
                     case "mover":
-                        this.moverPersonaje(posicion[0] + 1, posicion[1], escenario);
+                        escenarioObj.moverPersonaje(this, posicion[0] + 1, posicion[1]);
                         break;
                     case "atacar":
-                        this.atacarPersonaje(posicion[0] + 1, posicion[1], escenario);
+                        this.atacarPersonaje(posicion[0] + 1, posicion[1], escenarioObj.getEscenario());
                         break;
                     default:
                         break;
@@ -265,10 +264,10 @@ public class Protagonista extends Personaje {
             case "D":
                 switch (accion) {
                     case "mover":
-                        this.moverPersonaje(posicion[0], posicion[1] + 1, escenario);
+                        escenarioObj.moverPersonaje(this, posicion[0], posicion[1] + 1);
                         break;
                     case "atacar":
-                        this.atacarPersonaje(posicion[0], posicion[1] + 1, escenario);
+                        this.atacarPersonaje(posicion[0], posicion[1] + 1, escenarioObj.getEscenario());
                         break;
                     default:
                         break;
